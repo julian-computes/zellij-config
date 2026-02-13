@@ -10,10 +10,7 @@ layout {
                     command "bash"
                     args "-c" "while true; do clear; tk ready; sleep 10; done"
                 }
-                pane name="shell" focus=true {
-                    command "bash"
-                    args "-c" "zellij action rename-tab \"$(git branch --show-current 2>/dev/null || echo 'main')\"; exec $SHELL"
-                }
+                pane name="shell" focus=true
             }
         }
         pane size=2 borderless=true {
