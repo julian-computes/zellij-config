@@ -1,0 +1,23 @@
+layout {
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        pane split_direction="vertical" {
+            pane size="60%" name="agent"
+            pane size="40%" {
+                pane name="issues" {
+                    command "bash"
+                    args "-c" "while true; do clear; tk ready; sleep 10; done"
+                }
+                pane name="shell" focus=true {
+                    command "bash"
+                    args "-c" "zellij action rename-tab \"$(git branch --show-current 2>/dev/null || echo 'main')\"; exec $SHELL"
+                }
+            }
+        }
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+}
